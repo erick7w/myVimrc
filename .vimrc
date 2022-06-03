@@ -7,6 +7,7 @@ set nocompatible
 
 " 光标配置
 set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=Red
 
 set showmatch " 显示括号匹配
 
@@ -34,18 +35,21 @@ let mapleader=','
 " nerdtree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
-
+nnoremap <leader>o :tabnew<CR>
+nnoremap <leader>s :Startify<CR>
 " ctrlp 当前文件夹文件搜索
 let g:ctrlp_map = '<c-p>'
 " easymotoin 当前页搜索单词
 nmap ss <Plug>(easymotion-s2)
+
+let g:fzf_layout = { 'down': '~70%' }
 
 " far 当前文件夹下内容替换
 " Far foo bar **/*.py "foo 替换为 bar 
 nmap <Leader>. :TagbarToggle<CR>
 " 代码大纲
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
-let g:tagbar_width = max([30, winwidth(0) / 5])
+let g:tagbar_width = max([45, winwidth(0) / 5])
 
 
 " ==== 系统剪切板复制粘贴 ====
@@ -68,10 +72,11 @@ set ignorecase
 " 开启24bit的颜色，开启这个颜色会更漂亮一些
 set termguicolors
 
-set background=dark
+"set background=dark
 "colorscheme hybrid
 "colorscheme jellybeans
 colorscheme ghdark
+"colorscheme wombat
 "if ! has("gui_running")
 "    set t_Co=256
 "endif
@@ -79,7 +84,7 @@ colorscheme ghdark
 "set background=dark
 "colors peaksea
 "
-
+"colorscheme hybrid
 
 
 
@@ -111,7 +116,6 @@ let g:go_highlight_generate_tags = 1
 let g:godef_split=2
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "插件配置 vim-plugin
 
@@ -119,6 +123,7 @@ call plug#begin()
 
 " 美化插件
 Plug 'mhinz/vim-startify'
+""Plug 'bling/vim-bufferline'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -145,11 +150,15 @@ Plug 'majutsushi/tagbar'
 " 自动补全括号的插件，包括小括号，中括号，以及花括号
 Plug 'jiangmiao/auto-pairs'
 
+" 代码自动完成，安装完插件还需要额外配置才可以使用
+"Plug 'Valloric/YouCompleteMe'
+
 " 配色方案
 Plug 'wojciechkepka/vim-github-dark'
 Plug 'w0ng/vim-hybrid'
 Plug 'vim-scripts/peaksea'
 Plug 'nanotech/jellybeans.vim'
+Plug 'chuling/ci_dark'
 
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
